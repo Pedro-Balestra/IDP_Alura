@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 // then press Enter. You can now see whitespace characters in your code.
 public class TesteDescontos {
     public static void main(String[] args) {
-        Orcamento primeiro = new Orcamento(new BigDecimal("200"), 4);
+        Orcamento primeiro = new Orcamento(new BigDecimal("200"), 6);
         Orcamento segundo = new Orcamento(new BigDecimal("1000"), 1);
         CalculadoradeDescontos calculadoradeDescontos = new CalculadoradeDescontos();
         System.out.println(calculadoradeDescontos.calcular(primeiro));
