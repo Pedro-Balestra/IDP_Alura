@@ -13,6 +13,7 @@ public class TestesComposicao {
 
         Orcamento novo = new Orcamento();
         novo.adicionarItem(new ItemOrcamento(new BigDecimal("500")));
+        novo.adicionarItem(antigo);
 
         System.out.println(novo.getValor());
 
