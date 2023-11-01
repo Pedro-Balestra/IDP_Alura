@@ -1,4 +1,4 @@
-package med.voll.api.endereco;
+package med.voll.api.domain.endereco;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
@@ -28,7 +28,7 @@ public class Endereco {
         this.uf = dados.uf();
     }
 
-    public void atulizarInformacoes(DadosEndereco dados) {
+    public void atualizarInformacoes(DadosEndereco dados) {
         if(dados.logradouro() != null){
             this.logradouro = dados.logradouro();
         }
