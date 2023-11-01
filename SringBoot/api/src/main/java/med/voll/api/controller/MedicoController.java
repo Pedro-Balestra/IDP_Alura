@@ -32,7 +32,13 @@ public class MedicoController {
     public void atualizar(@RequestBody @Valid DadosAtualizacaoMedico dados){
         var medico = repository.getReferenceById(dados.id());
         medico.atulizarInformacoes(dados);
-        
+
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void excluir(@PathVariable Long id){
+        repository.deleteById(id);
     }
 
 }
