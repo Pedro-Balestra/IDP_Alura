@@ -15,6 +15,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.mockito.ArgumentMatchers.any;
+
 
 class FinalizarLeilaoServiceTest {
 
@@ -51,6 +53,22 @@ class FinalizarLeilaoServiceTest {
         Leilao leilao = leilaos.get(0);
         Lance lanceVencedor = leilao.getLanceVencedor();
         Mockito.verify(enviadorDeEmails).enviarEmailVencedorLeilao(lanceVencedor);
+
+    }
+
+    @Test
+    void naoDeveriaEnviarEmailParaVencedorDoLeilaoCaroDeErroAoEncerrarOLeilao() {
+        List<Leilao> leilaos = leiloes();
+        Mockito.when(leilaoDao.buscarLeiloesExpirados()).thenReturn(leilaos);
+
+        Mockito.when(leilaoDao.salvar(any())).thenThrow(RuntimeException.class);
+
+        try{
+            service.finalizarLeiloesExpirados();
+            Mockito.verifyNoInteractions(enviadorDeEmails);
+        }catch (Exception e){}
+
+
 
     }
 
