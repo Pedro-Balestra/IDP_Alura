@@ -1,3 +1,5 @@
+package leilao;
+
 import br.com.alura.leilao.dao.LeilaoDao;
 import br.com.alura.leilao.model.Leilao;
 import org.junit.Assert;
