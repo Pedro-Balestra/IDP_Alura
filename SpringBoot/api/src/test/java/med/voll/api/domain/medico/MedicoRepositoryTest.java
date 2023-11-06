@@ -46,7 +46,7 @@ class MedicoRepositoryTest {
         var medicoLivre = medicoRepository.escolherMedicoAleatorioLivreNaData(Especialidade.CARDIOLOGIA, proximaSegundaAs10);
         assertThat(medicoLivre).isNull();
     }
-    
+
     @Test
     @DisplayName("Deveria devolver medico quando ele estiver disponivel na data")
     void escolherMedicoAleatorioLivreNaDataCenario2() {
