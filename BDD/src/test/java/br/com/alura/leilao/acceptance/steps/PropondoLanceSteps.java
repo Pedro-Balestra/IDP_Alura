@@ -13,49 +13,54 @@ import io.cucumber.java.pt.Quando;
 
 public class PropondoLanceSteps {
 
-	private Lance lance;
-	private Leilao leilao;
-	private Lance lance10;
-	private Lance lance15;
+    private Lance lance;
+    private Leilao leilao;
+    private Lance lance10;
+    private Lance lance15;
 
-	@Dado("um lance valido")
-	public void dado_um_lance_valido() {
-		Usuario usuario = new Usuario("fulano");
-		lance = new Lance(usuario , BigDecimal.TEN);
-		leilao = new Leilao("Tablet XPTO");
-	}
+    @Dado("um lance valido")
+    public void dado_um_lance_valido() {
+        Usuario usuario = new Usuario("fulano");
+        lance = new Lance(usuario, BigDecimal.TEN);
+        leilao = new Leilao("Tablet XPTO");
+    }
 
-	@Quando("propoe ao leilao")
-	public void quando_propoe_o_lance() {
+    @Quando("propoe ao leilao")
+    public void quando_propoe_o_lance() {
 
-		leilao.propoe(lance);
-	}
-	
-	@Entao("o lance eh aceito")
-	public void entao_o_lance_eh_aceito() {
-		Assert.assertEquals(1, leilao.getLances().size());
-		Assert.assertEquals(BigDecimal.TEN, leilao.getLances().get(0).getValor());
-	}
+        leilao.propoe(lance);
+    }
 
-	@Dado("varios lances valido")
-	public void varios_lances_valido() {
-		Usuario usuario1 = new Usuario("fulano");
-		lance10 = new Lance(usuario1 , BigDecimal.TEN);
-		Usuario usuario2 = new Usuario("beltrano");
-		lance15 = new Lance(usuario2 , new BigDecimal("15.0"));
-		leilao = new Leilao("Tablet XPTO");
-	}
+    @Entao("o lance eh aceito")
+    public void entao_o_lance_eh_aceito() {
+        Assert.assertEquals(1, leilao.getLances().size());
+        Assert.assertEquals(BigDecimal.TEN, leilao.getLances().get(0).getValor());
+    }
 
-	@Quando("propoe varios lances ao leilao")
-	public void propoe_varios_lances_ao_leilao() {
-		leilao.propoe(lance10);
-		leilao.propoe(lance15);
+    //	@Dado("varios lances valido")
+//	public void varios_lances_valido() {
+//		Usuario usuario1 = new Usuario("fulano");
+//		lance10 = new Lance(usuario1 , BigDecimal.TEN);
+//		Usuario usuario2 = new Usuario("beltrano");
+//		lance15 = new Lance(usuario2 , new BigDecimal("15.0"));
+//		leilao = new Leilao("Tablet XPTO");
+//	}
+    @Dado("um lance de {double} reais do usuario {string}")
+    public void um_lance_de_reais_do_usuario_fulando(Double valor, String nomeUsuario) {
 
-	}
-	@Entao("os lances sao aceitos")
-	public void os_lances_sao_aceitos() {
-		Assert.assertEquals(2, leilao.getLances().size());
-		Assert.assertEquals(BigDecimal.TEN, leilao.getLances().get(0).getValor());
-		Assert.assertEquals(new BigDecimal("15.0"), leilao.getLances().get(1).getValor());
-	}
+    }
+
+    @Quando("propoe varios lances ao leilao")
+    public void propoe_varios_lances_ao_leilao() {
+        leilao.propoe(lance10);
+        leilao.propoe(lance15);
+
+    }
+
+    @Entao("os lances sao aceitos")
+    public void os_lances_sao_aceitos() {
+        Assert.assertEquals(2, leilao.getLances().size());
+        Assert.assertEquals(BigDecimal.TEN, leilao.getLances().get(0).getValor());
+        Assert.assertEquals(new BigDecimal("15.0"), leilao.getLances().get(1).getValor());
+    }
 }
