@@ -7,8 +7,8 @@ Funcionalidade: Propondo lances ao leilao
     Quando propoe ao leilao
     Entao o lance eh aceito
 
-  Cenario: Propondo varios lances valido
-    Dado um lance de 10.0 reais do usuario "fulando"
+  Cenario: Propondo varios lances validos
+    Dado um lance de 10.0 reais do usuario "fulano"
     E um lance de 15.0 reais do usuario "beltrano"
     Quando propoe varios lances ao leilao
     Entao os lances sao aceitos
@@ -21,7 +21,7 @@ Funcionalidade: Propondo lances ao leilao
     Exemplos:
       | valor | nomeUsuario |
       | 0     | beltrano    |
-      | -1    | ciclano     |
+      | -1    | cigano      |
 
 
   Cenario: Propondo uma sequencia de lances
@@ -31,3 +31,4 @@ Funcionalidade: Propondo lances ao leilao
       | 15.0  | beltrano    |
     Quando propoe varios lances ao leilao
     Entao o segundo lance nao eh aceito
+    
